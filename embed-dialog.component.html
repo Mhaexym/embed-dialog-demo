@@ -1,0 +1,110 @@
+<h1>Deel je werk</h1>
+<hr />
+<div mat-dialog-content style="max-width: 700px;">
+    <h2>Share op socials</h2>
+    <div class="py-2">
+        <a role="button" [url]="url" [title]="title" [image]="imageUrl" (opened)="onShare('facebook')" class="link-dark mx-2" shareButton="facebook"><i class="fab fa-facebook fa-2x"></i></a>
+        <a role="button" [url]="url" [title]="title" [image]="imageUrl" (opened)="onShare('pinterest')" class="link-dark mx-2" shareButton="pinterest"><i class="fab fa-pinterest fa-2x"></i></a>
+        <a role="button" [url]="url" [title]="title" [image]="imageUrl" (opened)="onShare('twitter')" class="link-dark mx-2" shareButton="twitter"><i class="fab fa-twitter fa-2x"></i></a>
+        <a role="button" [url]="url" [title]="title" [image]="imageUrl" (opened)="onShare('whatsapp')" class="link-dark mx-2 d-sm-none" shareButton="whatsapp"><i class="fab fa-whatsapp fa-2x"></i></a>
+        <a role="button" [url]="url" [title]="title" [image]="imageUrl" (opened)="onShare('reddit')" class="link-dark mx-2" shareButton="reddit"><i class="fab fa-reddit fa-2x"></i></a>
+    </div>
+    <hr />
+    <h2>Eigen Ardado-knop</h2>
+    <p class="mt-2 mb-3">
+        Maak hier de juiste knop voor jouw website. De knop leidt naar de werkpagina van dit kunstwerk. Zo kunnen bezoekers van jouw website
+        direct je werk bestellen via Ardado.
+        Pas je knop naar behoren aan, kopi&euml;er de onderstaande code en voeg toe aan je eigen website. Op
+        WordPress websites kun je een HTML-blok aanmaken en de code daarin plakken. 
+    </p>
+    <div class="row">
+        <div class="col">
+            <h5>Kleur</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="color" [(ngModel)]="color" value="#F7D407" id="color3" checked>
+                <label class="form-check-label" for="color3">
+                    Ardado-geel
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="color" [(ngModel)]="color" value="white" id="color1">
+                <label class="form-check-label" for="color1">
+                    Wit
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="color" [(ngModel)]="color" value="black" id="color2">
+                <label class="form-check-label" for="color2">
+                    Zwart
+                </label>
+            </div>
+        </div>
+        <div class="col">
+            <h5>Formaat</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="size" [(ngModel)]="size" value="30" id="size1">
+                <label class="form-check-label" for="size1">
+                    Klein
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="size" [(ngModel)]="size" value="38" id="size2" checked>
+                <label class="form-check-label" for="size2">
+                    Middel
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="size" [(ngModel)]="size" value="54" id="size3">
+                <label class="form-check-label" for="size3">
+                    Groot
+                </label>
+            </div>
+        </div>
+        <div class="col">
+            <h5>Vorm</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="shape" [(ngModel)]="shape" value="round" id="shape1">
+                <label class="form-check-label" for="shape1">
+                    Rond
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="shape" [(ngModel)]="shape" value="square" id="shape2">
+                <label class="form-check-label" for="shape2">
+                    Vierkant
+                </label>
+            </div>
+        </div>
+        <div class="col">
+            <h5>Tekst</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="text" [(ngModel)]="withText" value="true" id="text2">
+                <label class="form-check-label" for="text2">
+                    Met tekst:
+                </label>
+            </div>
+            <input [disabled]="withText != 'true'" type="text" class="w-100 me-2 mt-2 mb-2 form-control" [(ngModel)]="text" placeholder="Vul tekst in..." />
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="text" [(ngModel)]="withText" value="false" id="text1" checked>
+                <label class="form-check-label" for="text1">
+                    Alleen icoon
+                </label>
+            </div>
+        </div>
+
+        <h5>Voorbeeld</h5>
+        <div class="example align-items-center justify-content-center d-flex">
+            <span [class]="hoverClass" [style]="style" [innerHTML]="embedContent"></span>
+        </div>
+        <h5>Embed code</h5>
+        <div class="input-group">
+            <textarea class="form-control" id="embedcode" [value]="embedCode"></textarea>
+            <button (click)="copy('embedcode')" class="btn btn-outline-secondary input-group-addon btn-icon px-2" type="button"><mat-icon class="">content_copy</mat-icon></button>
+        </div>
+    </div>
+</div>
+
+<div mat-dialog-actions class="justify-content-between">
+    <div class="fst-italic">Hulp nodig? Stuur ons een mail via <a href="mailto:contact@ardado.nl">contact@ardado.nl</a>.</div>
+    <button class="btn btn-secondary btn-rounded" (click)="dialogRef.close()">Klaar</button>
+</div>
